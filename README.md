@@ -26,6 +26,14 @@ that series of button presses starts again to remind me of the pattern so I can 
 - As a  user i can win the game by getting a series of 20 steps correct. I am notified of my victory, then the game starts over.
 Hint: Here are mp3s you can use for each button: https://s3.amazonaws.com/freecodecamp/simonSound1.mp3, https://s3.amazonaws.com/freecodecamp/simonSound2.mp3, https://s3.amazonaws.com/freecodecamp/simonSound3.mp3, https://s3.amazonaws.com/freecodecamp/simonSound4.mp3.
 
+**Mockup**
+
+You find a mockup of the application [here](https://wickyakloe.github.io/Simon-Game/mockup/)
+
+```
+https://wickyakloe.github.io/Simon-Game/mockup/
+```
+
 <!--## Features-->
 
 <!--In this section, you should go over the different parts of your project, and describe each in a sentence or so.-->
@@ -73,17 +81,12 @@ Tested using [Jasmin]
 
 <!--If this section grows too long, you may want to split it off into a separate file and link to it from here.-->
 
-<!--## Deployment-->
+## Deployment
 
-<!--This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).-->
-
-<!--In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:-->
-<!--- Different values for environment variables (Heroku Config Vars)?-->
-<!--- Different configuration files?-->
-<!--- Separate git branch?-->
-
-<!--In addition, if it is not obvious, you should also describe how to run your code locally.-->
-
+The project is hosted on Github Pages [here]()
+```
+url
+```
 
 <!--## Credits-->
 
