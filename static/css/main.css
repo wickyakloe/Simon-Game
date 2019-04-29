@@ -1,6 +1,6 @@
 /*Import font from google*/
 
-@import url('https://fonts.googleapis.com/css?family=Gugi');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
 .flex-container {
@@ -37,49 +37,61 @@
     inset 0 0 10px #828282;
 }
 
+/*give boxes light*/
+.light {
+    box-shadow: 0 0 10px #fff;
+}
 
 .gameButton {
     width: 100px;
     height: 100px;
+    border-radius: 15px;
     background-color: #ff000096;
 }
 
 
 /*Red button left*/
+
 #red {
     position: relative;
-    top: 180px;
-    left: 20px;
+    top: 190px;
+    left: 10px;
     background-color: #ff000096;
+
 }
 
 /*Green button top*/
+
 #green {
     position: relative;
-    top: -80px;
-    left: 20px;
+    top: -90px;
+    left: 10px;
     background-color: #00ff1496;
 
 }
 
 /*Blue button right*/
+
 #blue {
     position: relative;
-    left: 180px;
-    bottom: 180px;
+    left: 190px;
+    bottom: 190px;
     background-color: #00c4ff96;
+
 }
 
 /*Yellow button bot*/
+
 #yellow {
     position: relative;
-    left: 180px;
-    bottom: 120px;
+    left: 190px;
+    bottom: 110px;
     background-color: #ffe00096;
+
 }
 
-
-#label{
+/*Label on center of board*/
+#label {
     border-radius: 15px;
     position: relative;
     bottom: 300px;
@@ -89,16 +101,22 @@
     transform: rotate(45deg);
     background-color: #dadada;
     box-shadow: inset 0 0 10px #828282;
+
 }
 
 /*Game name*/
-#name h2 {
+#name {
     position: absolute;
     transform: rotate(-90deg);
-    right: 40px;
-    top: 15px;
-    
-    font-family: 'Gugi', cursive;
+    right: 45px;
+    top: 20px;
+
+
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
     font-weight: bold;
     color: #000;
     text-shadow: 2px 2px #fff;
