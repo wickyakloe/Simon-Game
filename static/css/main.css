@@ -13,7 +13,7 @@
     display: flex;
     width: 800px;
     height: 500px;
-    background-image: url("/static/media/surface.jpg");
+    background-image: url("../media/surface.jpg");
     justify-content: center;
 
 }
