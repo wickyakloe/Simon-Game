@@ -1,13 +1,15 @@
 /*Import font from google*/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
 .flex-container {
     display: flex;
     margin-top: 25px;
     justify-content: center;
 }
+
+/*table top*/
 
 #table {
     display: flex;
@@ -18,7 +20,7 @@
 
 }
 
-/*Draw board*/
+/*Draw board on table*/
 
 #board {
     width: 300px;
@@ -32,12 +34,14 @@
 
 
 /*put shadows on boxes*/
+
 .shadow {
     box-shadow: 3px 9px 9px 9px #484747,
     inset 0 0 10px #828282;
 }
 
 /*give boxes light*/
+
 .light {
     box-shadow: 0 0 10px #fff;
 }
@@ -91,6 +95,7 @@
 }
 
 /*Label on center of board*/
+
 #label {
     border-radius: 15px;
     position: relative;
@@ -105,19 +110,90 @@
 }
 
 /*Game name*/
+
 #name {
     position: absolute;
     transform: rotate(-90deg);
-    right: 45px;
-    top: 20px;
+    right: 85px;
+    top: 100px;
 
 
 }
 
 h2 {
     font-family: 'Roboto', sans-serif;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: bold;
-    color: #000;
-    text-shadow: 2px 2px #fff;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+}
+
+/*Counter*/
+
+#counter {
+    transform: rotate(-90deg);
+    position: relative;
+    left: 30px;
+    top: 12px;
+}
+
+#counter input {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: red;
+    padding-left: 15px;
+    margin-right: 0px;
+    width: 35px;
+    border-radius: 10px
+}
+
+.button {
+    background-color: #aaaaaa;
+    border: solid 2px;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+#start-button p {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px green;
+
+}
+
+#reset-button p {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px red;
+
+}
+
+#start-button {
+    transform: rotate(-90deg);
+    padding-left: 60px;
+    padding-bottom: 15px;
+
+}
+#start-button button {
+    background-color: green;
+
+}
+#reset-button {
+    transform: rotate(-90deg);
+    padding-left: 80px;
+    padding-bottom: 15px;
+}
+#reset-button button {
+    background-color: red;
+
 }
