@@ -167,7 +167,7 @@ h2 {
     border-radius: 50%;
 }
 
-#start-button p {
+#on-button p {
     padding: 0;
     margin: 0;
     font-size: 12px;
@@ -176,7 +176,7 @@ h2 {
 
 }
 
-#reset-button p {
+#off-button p {
     padding: 0;
     margin: 0;
     font-size: 12px;
@@ -185,24 +185,24 @@ h2 {
 
 }
 
-#start-button {
+#on-button {
     transform: rotate(-90deg);
     padding-left: 65px;
     padding-bottom: 15px;
 
 }
 
-#start-button button {
+#on-button button {
     background-color: #00800075;
 
 }
 
-#reset-button {
+#off-button {
     transform: rotate(-90deg);
     padding-left: 75px;
     padding-bottom: 15px;
 }
 
-#reset-button button {
+#off-button button {
     background-color: #ff000075;
 }

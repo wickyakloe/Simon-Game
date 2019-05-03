@@ -6,13 +6,14 @@ $(document).ready(function() {
         $("#green").addClass("light");
         $("#blue").addClass("light");
         $("#yellow").addClass("light");
+        $("input").val("00");
     })
 
     //Reset Button
     $("#reset").on("mousedown", function() {
         $(this).css("background-color", "red");
         $("#start").removeAttr("style");
-        $("input").val("00");
+        $("input").val("");
     })
 
     $("#reset").on("mouseup", function() {
