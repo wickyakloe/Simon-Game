@@ -15,32 +15,33 @@
     <div class="flex-container">
         <div id="table">
             <div id="board" class="shadow">
-                <div id="red" class="gameButton shadow light"></div>
-                <div id="green" class="gameButton shadow light"></div>
-                <div id="blue" class="gameButton shadow light"></div>
-                <div id="yellow" class="gameButton shadow light"></div>
+                <div id="red" class="gameButton shadow"></div>
+                <div id="green" class="gameButton shadow"></div>
+                <div id="blue" class="gameButton shadow"></div>
+                <div id="yellow" class="gameButton shadow"></div>
                 <div id="label">
                     <div id="name">
                         <h2>Simon®</h2>
                     </div>
                     <div id="counter">
-                        <input type="number" name="level" value="29" readonly>
+                        <input type="number" name="level" value="" readonly>
                     </div>
                     <div id="start-button">
-                        <button class="button shadow light"></button>
-                        <p>GO</p>
+                        <button id="start" class="button shadow light"></button>
+                        <p>on/Go</p>
                     </div>
                     <div id="reset-button">
-                        <button class="button shadow light"></button>
+                        <button id="reset" class="button shadow light"></button>
                         <p>reset</p>
                     </div>
                 </div>
 
             </div>
         </div>
-
     </div>
 
+    <script type="text/javascript" src="static/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="static/js/game.js"></script>
 </body>
 
 </html>

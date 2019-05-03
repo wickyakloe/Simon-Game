@@ -9,13 +9,20 @@
     justify-content: center;
 }
 
+body {
+    background-color: #000;
+    background-image: url("../media/surface.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
 /*table top*/
 
 #table {
     display: flex;
     width: 800px;
     height: 500px;
-    background-image: url("../media/surface.jpg");
     justify-content: center;
 
 }
@@ -180,20 +187,22 @@ h2 {
 
 #start-button {
     transform: rotate(-90deg);
-    padding-left: 60px;
+    padding-left: 65px;
     padding-bottom: 15px;
 
 }
+
 #start-button button {
-    background-color: green;
+    background-color: #00800075;
 
 }
+
 #reset-button {
     transform: rotate(-90deg);
-    padding-left: 80px;
+    padding-left: 75px;
     padding-bottom: 15px;
 }
-#reset-button button {
-    background-color: red;
 
+#reset-button button {
+    background-color: #ff000075;
 }
