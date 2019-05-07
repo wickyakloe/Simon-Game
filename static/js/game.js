@@ -26,8 +26,10 @@ $(document).ready(function() {
 
 });
 
-
+//The main Playlist
 var playlist = [];
+//Array to generate a new array for the main Playlist
+var newPlaylist = [];
 
 //Generate random number between 0 and 3
 function genRandomInt() {
@@ -36,16 +38,30 @@ function genRandomInt() {
 }
 
 //fill Playlist
-function fillPlaylist(){
-    if( playlist.length !== 0 ){
-        var lastInPlaylist = playlist[playlist.length -1].toString();
-        console.log(lastInPlaylist)
+function fillPlaylist() {
+    if (playlist.length !== 0) {
+        //Clear array
         var newPlaylist = [];
-        newPlaylist.push(lastInPlaylist, genRandomInt().toString());
-        console.log(newPlaylist);
+        
+        //Get last item
+        var lastInPlaylist = playlist[playlist.length - 1];
+        //Iterate trough last item and push to newPlaylist with new value
+        for (var index in lastInPlaylist) {
+            var value = lastInPlaylist[index];
+            newPlaylist.push(value);
+        }
+        newPlaylist.push(genRandomInt());
+        //Push to the main Playlist
         playlist.push(newPlaylist);
 
-    } else{
+
+    }
+    else {
         playlist.push([genRandomInt()]);
     }
+}
+
+//Play the current level/round from the Main playlist
+function playButtons(){
+    
 }
