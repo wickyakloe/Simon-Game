@@ -42,7 +42,7 @@ function fillPlaylist() {
     if (playlist.length !== 0) {
         //Clear array
         var newPlaylist = [];
-        
+
         //Get last item
         var lastInPlaylist = playlist[playlist.length - 1];
         //Iterate trough last item and push to newPlaylist with new value
@@ -53,15 +53,24 @@ function fillPlaylist() {
         newPlaylist.push(genRandomInt());
         //Push to the main Playlist
         playlist.push(newPlaylist);
+        //Show level you are playing
+        showLevel();
 
 
     }
     else {
         playlist.push([genRandomInt()]);
+        //Show level you are playing
+        showLevel();
     }
 }
 
 //Play the current level/round from the Main playlist
-function playButtons(){
-    
+function playButtons() {
+
+
+}
+
+function showLevel() {
+    $("#level").val(playlist.length);
 }
