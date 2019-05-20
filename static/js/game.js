@@ -8,6 +8,11 @@ $('#start').on('click', function () {
   $('#blue').addClass('light')
   $('#yellow').addClass('light')
   $('input').val('00')
+  // Activate buttons
+  $('#red').attr('onclick', 'redClick()')
+  $('#green').attr('onclick', 'greenClick()')
+  $('#blue').attr('onclick', 'blueClick()')
+  $('#yellow').attr('onclick', 'yellowClick()')
 })
 
 // Reset/off Button
@@ -16,6 +21,11 @@ $(function resetButton () {
     $(this).css('background-color', 'red')
     $('#start').removeAttr('style')
     $('input').val('')
+    // Deactive buttons
+    $('#red').removeAttr('onclick')
+    $('#green').removeAttr('onclick')
+    $('#blue').removeAttr('onclick')
+    $('#yellow').removeAttr('onclick')
   })
 
   $('#reset').on('mouseup', function () {
@@ -34,30 +44,32 @@ $(function resetButton () {
 // green = 1
 // blue = 2
 // yellow = 3
-$('#red').on('click', function () {
+function redClick () {
   changeColor('red')
   checkValue(0)
-})
+}
 
-$('#green').on('click', function () {
+function greenClick () {
   changeColor('green')
   checkValue(1)
-})
+}
 
-$('#blue').on('click', function () {
+function blueClick () {
   changeColor('blue')
   checkValue(2)
-})
+}
 
-$('#yellow').on('click', function () {
+function yellowClick () {
   changeColor('yellow')
   checkValue(3)
-})
+}
 
 // The main Playlist
 var playlist = []
 // New generated playlist
 var newPlaylist = []
+// The user input
+var userInput = []
 
 // Generate random number between 0 and 3
 function genRandomInt () {
@@ -97,7 +109,7 @@ function playButtons () {
   return inter
 }
 
-// Program to pass each iteration with a delay 
+// Program to pass each iteration with a delay
 // code from stackoverflow
 function ArrayPlusDelay (array, delegate, delay) {
   var i = 0
@@ -113,9 +125,7 @@ function ArrayPlusDelay (array, delegate, delay) {
 
   return interval
 }
-
-// ArrayPlusDelay(playlist[playlist.length - 1], function (obj) { checkValue(obj) }, 1000)
-
+// check the value in playlist and change color and play sound
 function checkValue (colorValue) {
   if (colorValue === 0) {
     changeColor('red')
@@ -141,13 +151,6 @@ function changeColor (passcolor) {
   $('#' + passcolor).css('background-color', passcolor)
   setTimeout(function () { $('#' + passcolor).removeAttr('style') }, 600)
 }
-
-// function resetColor () {
-//   // var x = document.getElementById("reset")
-//   // // x.style.backgroundColor = "#ff000096"
-//   // x.style.removeProperty('background-color')
-//   setTimeout(function () { $('#red').removeAttr('style') }, 300)
-// }
 
 // show the last level your in
 function showLevel () {
