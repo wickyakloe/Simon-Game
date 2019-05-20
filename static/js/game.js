@@ -47,21 +47,25 @@ $(function resetButton () {
 function redClick () {
   changeColor('red')
   checkValue(0)
+  return userInput.push(0)
 }
 
 function greenClick () {
   changeColor('green')
   checkValue(1)
+  return userInput.push(1)
 }
 
 function blueClick () {
   changeColor('blue')
   checkValue(2)
+  return userInput.push(2)
 }
 
 function yellowClick () {
   changeColor('yellow')
   checkValue(3)
+  return userInput.push(3)
 }
 
 // The main Playlist
@@ -145,7 +149,15 @@ function checkValue (colorValue) {
     console.log('value is 3 yellow')
   }
 }
-
+// Check userInput against last playlist
+function checkUserInput () {
+  // will return the index if found in playlist else will return -1
+  var lastInPlaylist = playlist[playlist.length - 1]
+  for (var index in userInput) {
+    var value = userInput[index]
+    console.log($.inArray(value, lastInPlaylist, index))
+  }
+}
 // Change tot color of the button
 function changeColor (passcolor) {
   $('#' + passcolor).css('background-color', passcolor)
