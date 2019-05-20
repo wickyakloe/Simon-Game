@@ -29,6 +29,31 @@ $(function resetButton () {
   })
 })
 
+// Play buttons
+// red = 0
+// green = 1
+// blue = 2
+// yellow = 3
+$('#red').on('click', function () {
+  changeColor('red')
+  checkValue(0)
+})
+
+$('#green').on('click', function () {
+  changeColor('green')
+  checkValue(1)
+})
+
+$('#blue').on('click', function () {
+  changeColor('blue')
+  checkValue(2)
+})
+
+$('#yellow').on('click', function () {
+  changeColor('yellow')
+  checkValue(3)
+})
+
 // The main Playlist
 var playlist = []
 // New generated playlist
@@ -72,6 +97,8 @@ function playButtons () {
   return inter
 }
 
+// Program to pass each iteration with a delay 
+// code from stackoverflow
 function ArrayPlusDelay (array, delegate, delay) {
   var i = 0
 
@@ -109,6 +136,7 @@ function checkValue (colorValue) {
   }
 }
 
+// Change tot color of the button
 function changeColor (passcolor) {
   $('#' + passcolor).css('background-color', passcolor)
   setTimeout(function () { $('#' + passcolor).removeAttr('style') }, 600)
@@ -121,6 +149,7 @@ function changeColor (passcolor) {
 //   setTimeout(function () { $('#red').removeAttr('style') }, 300)
 // }
 
+// show the last level your in
 function showLevel () {
   $('#level').val(playlist.length)
 }
