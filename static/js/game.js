@@ -1,17 +1,17 @@
 /* eslint-env jquery */
 
-$(document).ready(function () {
-  // Start/on Button
-  $('#start').on('click', function () {
-    $(this).css('background-color', 'green')
-    $('#red').addClass('light')
-    $('#green').addClass('light')
-    $('#blue').addClass('light')
-    $('#yellow').addClass('light')
-    $('input').val('00')
-  })
+// Start/on Button
+$('#start').on('click', function () {
+  $(this).css('background-color', 'green')
+  $('#red').addClass('light')
+  $('#green').addClass('light')
+  $('#blue').addClass('light')
+  $('#yellow').addClass('light')
+  $('input').val('00')
+})
 
-  // Reset/off Button
+// Reset/off Button
+$(function resetButton () {
   $('#reset').on('mousedown', function () {
     $(this).css('background-color', 'red')
     $('#start').removeAttr('style')
@@ -24,12 +24,14 @@ $(document).ready(function () {
     $('#green').removeClass('light')
     $('#blue').removeClass('light')
     $('#yellow').removeClass('light')
+    playlist.length = 0
+    clearInterval(playButtons())
   })
 })
 
 // The main Playlist
 var playlist = []
-// Array to generate a new array for the main Playlist
+// New generated playlist
 var newPlaylist = []
 
 // Generate random number between 0 and 3
@@ -66,22 +68,40 @@ function fillPlaylist () {
 // Play the current level/round from the Main playlist
 function playButtons () {
   var getLastPlaylist = playlist[playlist.length - 1]
-  console.log(getLastPlaylist)
-  for (var index in getLastPlaylist) {
-    var value = getLastPlaylist[index]
-    console.log(value)
-    if (value === 0) {
-      changeColor('red')
-      console.log('value is 0')
-    } else if (value === 1) {
-      changeColor('green')
-      console.log('value is 1')
-    } else if (value === 2) {
-      changeColor('blue')
-      console.log('value is 2')
-    } else {
-      changeColor('yellow')
-    }
+  var inter = ArrayPlusDelay(getLastPlaylist, function (obj) { checkValue(obj) }, 1000)
+  return inter
+}
+
+function ArrayPlusDelay (array, delegate, delay) {
+  var i = 0
+
+  // seed first call and store interval (to clear later)
+  var interval = setInterval(function () {
+  // each loop, call passed in function
+    delegate(array[i])
+
+    // increment, and if we're past array, clear interval
+    if (i++ >= array.length - 1) { clearInterval(interval) }
+  }, delay)
+
+  return interval
+}
+
+// ArrayPlusDelay(playlist[playlist.length - 1], function (obj) { checkValue(obj) }, 1000)
+
+function checkValue (colorValue) {
+  if (colorValue === 0) {
+    changeColor('red')
+    console.log('value is 0 red')
+  } else if (colorValue === 1) {
+    changeColor('green')
+    console.log('value is 1 green')
+  } else if (colorValue === 2) {
+    changeColor('blue')
+    console.log('value is 2 blue')
+  } else {
+    changeColor('yellow')
+    console.log('value is 3 yellow')
   }
 }
 
