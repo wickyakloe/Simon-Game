@@ -92,15 +92,19 @@ function ArrayPlusDelay (array, delegate, delay) {
 function checkValue (colorValue) {
   if (colorValue === 0) {
     changeColor('red')
+    $('#redSound')[0].play()
     console.log('value is 0 red')
   } else if (colorValue === 1) {
     changeColor('green')
+    $('#greenSound')[0].play()
     console.log('value is 1 green')
   } else if (colorValue === 2) {
     changeColor('blue')
+    $('#blueSound')[0].play()
     console.log('value is 2 blue')
   } else {
     changeColor('yellow')
+    $('#yellowSound')[0].play()
     console.log('value is 3 yellow')
   }
 }
