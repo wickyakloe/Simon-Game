@@ -8,11 +8,14 @@ $('#start').on('click', function () {
   $('#blue').addClass('light')
   $('#yellow').addClass('light')
   $('input').val('00')
+  // Start game
+  fillPlaylist()
+  playButtons()
   // Activate buttons
-  $('#red').attr('onclick', 'redClick()')
-  $('#green').attr('onclick', 'greenClick()')
-  $('#blue').attr('onclick', 'blueClick()')
-  $('#yellow').attr('onclick', 'yellowClick()')
+  $('#red').attr('onclick', 'testor(redClick, playButtons)')
+  $('#green').attr('onclick', 'testor(greenClick, playButtons)')
+  $('#blue').attr('onclick', 'testor(blueClick, playButtons)')
+  $('#yellow').attr('onclick', 'testor(yellowClick, playButtons)')
 })
 
 // Reset/off Button
@@ -66,6 +69,30 @@ function yellowClick () {
   changeColor('yellow')
   checkValue(3)
   return userInput.push(3)
+}
+
+function testor (cb1, cb2) {
+  var input = cb1() - 1
+  console.log(input)
+  var lastInPlaylist = playlist[playlist.length - 1]
+  var value = lastInPlaylist[input]
+  if (value === userInput[input]) {
+    console.log(value)
+    console.log(userInput[input])
+    if ( playlist.length !== userInput.length ) {
+      console.log("palylistnotEqual")
+    } else {
+      console.log("playlistequalss")
+      fillPlaylist()
+      playButtons()
+      userInput = []
+    }
+  } else {
+    console.log(value + "playlistvalue")
+    console.log(userInput[input] + "userinputvalue")
+    cb2()
+    userInput = []
+  }
 }
 
 // The main Playlist
@@ -153,9 +180,14 @@ function checkValue (colorValue) {
 function checkUserInput () {
   // will return the index if found in playlist else will return -1
   var lastInPlaylist = playlist[playlist.length - 1]
-  for (var index in userInput) {
-    var value = userInput[index]
-    console.log($.inArray(value, lastInPlaylist, index))
+  for (var index in lastInPlaylist) {
+    var value = lastInPlaylist[index]
+    if ( value === userInput[index] ) {
+      console.log(value)
+      console.log(userInput[index])
+    } else {
+      playButtons()
+    }
   }
 }
 // Change tot color of the button
