@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simon - Game</title>
+
+    <link rel="stylesheet" href="static/css/main.css" type="text/css" />
 </head>
+
 <body>
-    
+    <section>
+    <audio id="redSound">
+        <source src="static/media/simonSound1.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="greenSound">
+        <source src="static/media/simonSound2.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="blueSound">
+        <source src="static/media/simonSound3.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="yellowSound">
+        <source src="static/media/simonSound4.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+    <div class="flex-container">
+        <div id="table">
+            <div id="board" class="shadow">
+                <div id="red" class="gameButton shadow"></div>
+                <div id="green" class="gameButton shadow"></div>
+                <div id="blue" class="gameButton shadow"></div>
+                <div id="yellow" class="gameButton shadow"></div>
+                <div id="label">
+                    <div id="name">
+                        <h2>Simon®</h2>
+                    </div>
+                    <div id="counter">
+                        <input type="number" name="level" id="level" value="" readonly>
+                    </div>
+                    <div id="on-button">
+                        <button id="start" class="button shadow light"></button>
+                        <p>ON</p>
+                    </div>
+                    <div id="off-button">
+                        <button id="reset" class="button shadow light"></button>
+                        <p>OFF</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="static/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="static/js/game.js"></script>
 </body>
+
 </html>
