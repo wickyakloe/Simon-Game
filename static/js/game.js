@@ -160,19 +160,23 @@ function ArrayPlusDelay (array, delegate, delay) {
 function checkValue (colorValue) {
   if (colorValue === 0) {
     changeColor('red')
-    $('#redSound')[0].play()
+    var simonSound1 = new Audio('static/media/simonSound1.mp3')
+    simonSound1.play()
     console.log('value is 0 red')
   } else if (colorValue === 1) {
     changeColor('green')
-    $('#greenSound')[0].play()
+    var simonSound2 = new Audio('static/media/simonSound2.mp3')
+    simonSound2.play()
     console.log('value is 1 green')
   } else if (colorValue === 2) {
     changeColor('blue')
-    $('#blueSound')[0].play()
+    var simonSound3 = new Audio('static/media/simonSound3.mp3')
+    simonSound3.play()
     console.log('value is 2 blue')
   } else {
     changeColor('yellow')
-    $('#yellowSound')[0].play()
+    var simonSound4 = new Audio('static/media/simonSound4.mp3')
+    simonSound4.play()
     console.log('value is 3 yellow')
   }
 }
