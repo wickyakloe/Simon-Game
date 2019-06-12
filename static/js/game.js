@@ -127,26 +127,20 @@ function fillPlaylist () {
 // Play the current level/round from the Main playlist
 function playButtons () {
   var getLastPlaylist = playlist[playlist.length - 1]
-  var inter = ArrayPlusDelay(getLastPlaylist, function (obj) { checkValue(obj) }, 1000)
+  var inter = ArrayPlusDelay(getLastPlaylist, 1000)
   return inter
 }
 
 // Program to pass each iteration with a delay
 // code from stackoverflow
-function ArrayPlusDelay (array, delegate, delay) {
-  var i = 0
-
-  // seed first call and store interval (to clear later)
-  var interval = setInterval(function () {
-  // each loop, call passed in function
-    delegate(array[i])
-
-    // increment, and if we're past array, clear interval
-    if (i++ >= array.length - 1) { clearInterval(interval) }
-  }, delay)
-
-  return interval
+function ArrayPlusDelay (array, delay) {
+  array.forEach(function(number, index) {
+    setTimeout(function(){
+      checkValue(number)
+    }, delay * (index + 1))
+  });
 }
+
 // check the value in playlist and change color and play sound
 function checkValue (colorValue) {
   if (colorValue === 0) {
