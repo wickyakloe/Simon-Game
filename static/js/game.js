@@ -24,11 +24,12 @@ $(function resetButton () {
     $(this).css('background-color', 'red')
     $('#start').removeAttr('style')
     $('input').val('')
-    // Deactive buttons
+    // Deactivate buttons
     $('#red').removeAttr('onclick')
     $('#green').removeAttr('onclick')
     $('#blue').removeAttr('onclick')
     $('#yellow').removeAttr('onclick')
+    $('#level').text('00')
   })
 
   $('#reset').on('mouseup', function () {
