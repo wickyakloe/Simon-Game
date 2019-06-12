@@ -97,8 +97,6 @@ function testor (cb1, cb2) {
 
 // The main Playlist
 var playlist = []
-// New generated playlist
-var newPlaylist = []
 // The user input
 var userInput = []
 
@@ -111,19 +109,12 @@ function genRandomInt () {
 // fill Playlist
 function fillPlaylist () {
   if (playlist.length !== 0) {
-    // Clear array
-    var newPlaylist = []
-
     // Get last item
     var lastInPlaylist = playlist[playlist.length - 1]
-    // Iterate trough last item and push to newPlaylist with new value
-    for (var index in lastInPlaylist) {
-      var value = lastInPlaylist[index]
-      newPlaylist.push(value)
-    }
-    newPlaylist.push(genRandomInt())
-    // Push to the main Playlist
-    playlist.push(newPlaylist)
+    // Concatenate the array with the random generated number
+    var newList = lastInPlaylist.concat(genRandomInt())
+    // Push as new array to playlist
+	  playlist.push(newList)
     // Show level you are playing
     showLevel()
   } else {
