@@ -187,5 +187,9 @@ function changeColor (passcolor) {
 
 // show the last level your in
 function showLevel () {
-  $('#level').val(playlist.length)
+  if ( playlist.length < 10) {
+    $('#level').text("0" + playlist.length)
+  } else {
+    $('#level').text(playlist.length)
+  }
 }
