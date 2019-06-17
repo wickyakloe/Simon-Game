@@ -7,7 +7,6 @@ $('#start').on('click', function () {
   $('#green').addClass('light')
   $('#blue').addClass('light')
   $('#yellow').addClass('light')
-  $('input').val('00')
   // Start game
   fillPlaylist()
   playButtons()
@@ -23,7 +22,6 @@ $(function resetButton () {
   $('#reset').on('mousedown', function () {
     $(this).css('background-color', 'red')
     $('#start').removeAttr('style')
-    $('input').val('')
     // Deactivate buttons
     $('#red').removeAttr('onclick')
     $('#green').removeAttr('onclick')
