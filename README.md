@@ -5,16 +5,16 @@ The device creates a series of tones and lights and requires a user to repeat th
 
 We will try to replicate this game in this project.
 
-For more information see this 
+For more information see this
 [Wikipedia](https://en.wikipedia.org/wiki/Z) article
- 
+
 ## UX
 
 - As a user i can turn the game on and off
 - As a user i am presented with a random series of button presses.
-- As a user each time I input a series of button presses correctly, I see the 
+- As a user each time I input a series of button presses correctly, I see the
 same series of button presses but with an additional step.
-- As a user I hear a sound that corresponds to each button both when the series 
+- As a user I hear a sound that corresponds to each button both when the series
 of button presses plays, and when I personally press a button.
 - As a user if I press the wrong button, I am notified that I have done so, and
 that series of button presses starts again to remind me of the pattern so I can try again.
@@ -23,18 +23,18 @@ that series of button presses starts again to remind me of the pattern so I can 
   me that I have done so, and the game restarts at a new random series of button presses.
 - As a  user i can win the game by getting a series of 20 steps correct. I am notified of my victory, then the game starts over.
 
-**Mockup**
+## Mockup
 
 You find a mockup of the application [here](https://wickyakloe.github.io/Simon-Game/mockup/)
 
-```
+```url
 https://wickyakloe.github.io/Simon-Game/mockup/
 ```
 
 <!--## Features-->
 
 <!--In this section, you should go over the different parts of your project, and describe each in a sentence or so.-->
- 
+
 <!--### Existing Features-->
 <!--- Feature 1 - allows users X to achieve Y, by having them fill out Z-->
 <!--- ...-->
@@ -54,8 +54,7 @@ In this section, you should mention all of the languages, frameworks, libraries,
 - CSS
 - Javascript
 - [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
-
+  - The project uses **JQuery** to simplify DOM manipulation.
 
 ## Testing
 
@@ -82,8 +81,24 @@ Tested using [Jasmin ?]
 
 The project is hosted on Github Pages [here](https://wickyakloe.github.io/Simon-Game)
 
-```
+```url
 https://wickyakloe.github.io/Simon-Game
+```
+
+The deployment using Github Pages is done as follows:
+
+1. Sign in to your github account
+2. Go to the repository you want to host using github pages
+3. Click on settings
+4. Scroll down to the Github Pages section
+5. Select the source master branch
+
+### Local deployment
+
+To deploy this project locally using git ( make sure git is installed):
+
+```git
+git clone https://github.com/wickyakloe/Simon-Game.git
 ```
 
 <!--## Credits-->
