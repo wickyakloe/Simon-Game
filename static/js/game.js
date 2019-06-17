@@ -11,10 +11,10 @@ $('#start').on('click', function () {
   fillPlaylist()
   playButtons()
   // Activate buttons
-  $('#red').attr('onclick', 'testor(redClick, playButtons)')
-  $('#green').attr('onclick', 'testor(greenClick, playButtons)')
-  $('#blue').attr('onclick', 'testor(blueClick, playButtons)')
-  $('#yellow').attr('onclick', 'testor(yellowClick, playButtons)')
+  $('#red').attr('onclick', 'testor(clickButton("red", 0 ), playButtons)')
+  $('#green').attr('onclick', 'testor(clickButton("green", 1 ), playButtons)')
+  $('#blue').attr('onclick', 'testor(clickButton("blue", 2 ), playButtons)')
+  $('#yellow').attr('onclick', 'testor(clickButton("yellow", 3 ), playButtons)')
 })
 
 // Reset/off Button
@@ -46,49 +46,32 @@ $(function resetButton () {
 // green = 1
 // blue = 2
 // yellow = 3
-function redClick () {
-  changeColor('red')
-  checkValue(0)
-  return userInput.push(0)
-}
-
-function greenClick () {
-  changeColor('green')
-  checkValue(1)
-  return userInput.push(1)
-}
-
-function blueClick () {
-  changeColor('blue')
-  checkValue(2)
-  return userInput.push(2)
-}
-
-function yellowClick () {
-  changeColor('yellow')
-  checkValue(3)
-  return userInput.push(3)
+function clickButton (color, value) {
+  changeColor(color)
+  checkValue(value)
+  userInput.push(value)
+  return value
 }
 
 function testor (cb1, cb2) {
-  var input = cb1() - 1
+  var input = cb1 - 1
   console.log(input)
   var lastInPlaylist = playlist[playlist.length - 1]
   var value = lastInPlaylist[input]
   if (value === userInput[input]) {
     console.log(value)
     console.log(userInput[input])
-    if ( playlist.length !== userInput.length ) {
-      console.log("palylistnotEqual")
+    if (playlist.length !== userInput.length) {
+      console.log('palylistnotEqual')
     } else {
-      console.log("playlistequalss")
+      console.log('playlistequalss')
       fillPlaylist()
       playButtons()
       userInput = []
     }
   } else {
-    console.log(value + "playlistvalue")
-    console.log(userInput[input] + "userinputvalue")
+    console.log(value + 'playlistvalue')
+    console.log(userInput[input] + 'userinputvalue')
     cb2()
     userInput = []
   }
@@ -133,11 +116,11 @@ function playButtons () {
 // Program to pass each iteration with a delay
 // code from stackoverflow
 function ArrayPlusDelay (array, delay) {
-  array.forEach(function(number, index) {
-    setTimeout(function(){
+  array.forEach(function (number, index) {
+    setTimeout(function () {
       checkValue(number)
     }, delay * (index + 1))
-  });
+  })
 }
 
 // check the value in playlist and change color and play sound
@@ -170,7 +153,7 @@ function checkUserInput () {
   var lastInPlaylist = playlist[playlist.length - 1]
   for (var index in lastInPlaylist) {
     var value = lastInPlaylist[index]
-    if ( value === userInput[index] ) {
+    if (value === userInput[index]) {
       console.log(value)
       console.log(userInput[index])
     } else {
@@ -186,8 +169,8 @@ function changeColor (passcolor) {
 
 // show the last level your in
 function showLevel () {
-  if ( playlist.length < 10) {
-    $('#level').text("0" + playlist.length)
+  if (playlist.length < 10) {
+    $('#level').text('0' + playlist.length)
   } else {
     $('#level').text(playlist.length)
   }
