@@ -1,14 +1,7 @@
 /*Import font from google*/
-
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
-.flex-container {
-    display: flex;
-    margin-top: 25px;
-    justify-content: center;
-}
-
+/*Set background image and color*/
 body {
     background-color: #000;
     background-image: url("../media/surface.jpg");
@@ -17,8 +10,14 @@ body {
     height: 100%;
 }
 
-/*table top*/
+/*Create flex container*/
+.flex-container {
+    display: flex;
+    margin-top: 25px;
+    justify-content: center;
+}
 
+/*table top*/
 #table {
     display: flex;
     width: 800px;
@@ -28,7 +27,6 @@ body {
 }
 
 /*Draw board on table*/
-
 #board {
     width: 300px;
     height: 300px;
@@ -41,18 +39,17 @@ body {
 
 
 /*put shadows on boxes*/
-
 .shadow {
     box-shadow: 3px 9px 9px 9px #484747,
     inset 0 0 10px #828282;
 }
 
 /*give boxes light*/
-
 .light {
     box-shadow: 0 0 10px #fff;
 }
 
+/*Create button*/
 .gameButton {
     width: 100px;
     height: 100px;
@@ -62,7 +59,6 @@ body {
 
 
 /*Red button left*/
-
 #red {
     position: relative;
     top: 190px;
@@ -72,7 +68,6 @@ body {
 }
 
 /*Green button top*/
-
 #green {
     position: relative;
     top: -90px;
@@ -82,7 +77,6 @@ body {
 }
 
 /*Blue button right*/
-
 #blue {
     position: relative;
     left: 190px;
@@ -92,7 +86,6 @@ body {
 }
 
 /*Yellow button bot*/
-
 #yellow {
     position: relative;
     left: 190px;
@@ -102,7 +95,6 @@ body {
 }
 
 /*Label on center of board*/
-
 #label {
     border-radius: 15px;
     position: relative;
@@ -117,7 +109,6 @@ body {
 }
 
 /*Game name*/
-
 #name {
     position: absolute;
     transform: rotate(-90deg);
@@ -136,7 +127,6 @@ h2 {
 }
 
 /*Counter*/
-
 #counter {
     transform: rotate(-90deg);
     position: relative;
