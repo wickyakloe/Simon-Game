@@ -109,8 +109,7 @@ function fillPlaylist () {
 // Play the current level/round from the Main playlist
 function playButtons () {
   var getLastPlaylist = playlist[playlist.length - 1]
-  var inter = ArrayPlusDelay(getLastPlaylist, 1000)
-  return inter
+  return ArrayPlusDelay(getLastPlaylist, 1000)
 }
 
 // Program to pass each iteration with a delay
