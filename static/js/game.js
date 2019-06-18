@@ -1,6 +1,11 @@
 /* eslint-env jquery */
 
+// The main Playlist
+var playlist = []
+// The user input
+var userInput = []
 // Start/on Button
+
 $('#start').on('click', function () {
   $(this).css('background-color', 'green')
   $('#red').addClass('light')
@@ -76,11 +81,6 @@ function testor (cb1, cb2) {
     userInput = []
   }
 }
-
-// The main Playlist
-var playlist = []
-// The user input
-var userInput = []
 
 // Generate random number between 0 and 3
 function genRandomInt () {
