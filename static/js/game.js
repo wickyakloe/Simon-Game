@@ -133,20 +133,7 @@ function checkValue (colorValue) {
     console.log('value is 3 yellow')
   }
 }
-// Check userInput against last playlist
-function checkUserInput () {
-  // will return the index if found in playlist else will return -1
-  var lastInPlaylist = playlist[playlist.length - 1]
-  for (var index in lastInPlaylist) {
-    var value = lastInPlaylist[index]
-    if (value === userInput[index]) {
-      console.log(value)
-      console.log(userInput[index])
-    } else {
-      playButtons()
-    }
-  }
-}
+
 // Change tot color of the button
 function changeColor (passcolor) {
   $('#' + passcolor).css('background-color', passcolor)
