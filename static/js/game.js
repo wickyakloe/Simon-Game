@@ -16,10 +16,10 @@ $('#start').on('click', function () {
   fillPlaylist()
   playButtons()
   // Activate buttons
-  $('#red').attr('onclick', 'testor(clickButton("red", 0 ), playButtons)')
-  $('#green').attr('onclick', 'testor(clickButton("green", 1 ), playButtons)')
-  $('#blue').attr('onclick', 'testor(clickButton("blue", 2 ), playButtons)')
-  $('#yellow').attr('onclick', 'testor(clickButton("yellow", 3 ), playButtons)')
+  $('#red').attr('onclick', 'testor(clickButton("red", 0 ))')
+  $('#green').attr('onclick', 'testor(clickButton("green", 1 ))')
+  $('#blue').attr('onclick', 'testor(clickButton("blue", 2 ))')
+  $('#yellow').attr('onclick', 'testor(clickButton("yellow", 3 ))')
 })
 
 // Reset/off Button
@@ -42,7 +42,6 @@ $(function resetButton () {
     $('#blue').removeClass('light')
     $('#yellow').removeClass('light')
     playlist.length = 0
-    clearInterval(playButtons())
   })
 })
 
@@ -55,30 +54,31 @@ function clickButton (color, value) {
   changeColor(color)
   checkValue(value)
   userInput.push(value)
-  return value
+  return userInput
 }
 
-function testor (cb1, cb2) {
-  var input = cb1 - 1
-  console.log(input)
-  var lastInPlaylist = playlist[playlist.length - 1]
-  var value = lastInPlaylist[input]
-  if (value === userInput[input]) {
-    console.log(value)
-    console.log(userInput[input])
-    if (playlist.length !== userInput.length) {
-      console.log('palylistnotEqual')
+function tester (cb1) {
+  if (cb1.length !== playlist.length) {
+    cb1.forEach(function (number, index) {
+      if (cb1[index] !== playlist[index]) {
+        console.log('values are not equal')
+        userInput = []
+        playButtons()
+      } else {
+        console.log('values equal')
+      }
+    })
+  } else {
+    if (cb1[cb1.length - 1] !== playlist[playlist.length - 1]) {
+      console.log('values are not equal2')
+      userInput = []
+      playButtons()
     } else {
-      console.log('playlistequalss')
+      console.log('values equal2')
       fillPlaylist()
       playButtons()
       userInput = []
     }
-  } else {
-    console.log(value + 'playlistvalue')
-    console.log(userInput[input] + 'userinputvalue')
-    cb2()
-    userInput = []
   }
 }
 
@@ -90,20 +90,8 @@ function genRandomInt () {
 
 // fill Playlist
 function fillPlaylist () {
-  if (playlist.length !== 0) {
-    // Get last item
-    var lastInPlaylist = playlist[playlist.length - 1]
-    // Concatenate the array with the random generated number
-    var newList = lastInPlaylist.concat(genRandomInt())
-    // Push as new array to playlist
-	  playlist.push(newList)
-    // Show level you are playing
-    showLevel()
-  } else {
-    playlist.push([genRandomInt()])
-    // Show level you are playing
-    showLevel()
-  }
+  playlist.push(genRandomInt())
+  showLevel()
 }
 
 // Play the current level/round from the Main playlist
