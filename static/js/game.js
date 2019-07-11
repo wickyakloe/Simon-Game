@@ -16,10 +16,10 @@ $('#start').on('click', function () {
   fillPlaylist()
   playButtons()
   // Activate buttons
-  $('#red').attr('onclick', 'testor(clickButton("red", 0 ))')
-  $('#green').attr('onclick', 'testor(clickButton("green", 1 ))')
-  $('#blue').attr('onclick', 'testor(clickButton("blue", 2 ))')
-  $('#yellow').attr('onclick', 'testor(clickButton("yellow", 3 ))')
+  $('#red').attr('onclick', 'tester(clickButton("red", 0 ))')
+  $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
+  $('#blue').attr('onclick', 'tester(clickButton("blue", 2 ))')
+  $('#yellow').attr('onclick', 'tester(clickButton("yellow", 3 ))')
 })
 
 // Reset/off Button
