@@ -20,6 +20,10 @@ $('#start').on('click', function () {
   $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
   $('#blue').attr('onclick', 'tester(clickButton("blue", 2 ))')
   $('#yellow').attr('onclick', 'tester(clickButton("yellow", 3 ))')
+  // Disable the strict button
+  $('#strictBut').attr('disabled', true)
+  // Disable the on button
+  $('#start').attr('disabled', true)
 })
 
 // Reset/off Button
@@ -33,6 +37,10 @@ $(function resetButton () {
     $('#blue').removeAttr('onclick')
     $('#yellow').removeAttr('onclick')
     $('#level').text('00')
+    // Enable the strict button
+    $('#strictBut').attr('disabled', false)
+    // Enable the on button
+    $('#start').attr('disabled', false)
   })
 
   $('#reset').on('mouseup', function () {
@@ -43,6 +51,19 @@ $(function resetButton () {
     $('#yellow').removeClass('light')
     playlist.length = 0
   })
+})
+
+// Strict button
+$('#strictBut').on('click', function () {
+  if (this.value === 'OFF') {
+    this.value = 'ON'
+    $('#strictOnOff').text('STRICT MODE: ON')
+    $(this).css('background-color', 'red')
+  } else {
+    this.value = 'OFF'
+    $('#strictOnOff').text('STRICT MODE: OFF')
+    $(this).removeAttr('style')
+  }
 })
 
 // Play buttons
@@ -133,20 +154,7 @@ function checkValue (colorValue) {
     console.log('value is 3 yellow')
   }
 }
-// Check userInput against last playlist
-function checkUserInput () {
-  // will return the index if found in playlist else will return -1
-  var lastInPlaylist = playlist[playlist.length - 1]
-  for (var index in lastInPlaylist) {
-    var value = lastInPlaylist[index]
-    if (value === userInput[index]) {
-      console.log(value)
-      console.log(userInput[index])
-    } else {
-      playButtons()
-    }
-  }
-}
+
 // Change tot color of the button
 function changeColor (passcolor) {
   $('#' + passcolor).css('background-color', passcolor)
