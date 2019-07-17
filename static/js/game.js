@@ -187,3 +187,8 @@ function showLevel () {
     $('#level').text(playlist.length)
   }
 }
+
+// Victory message, see css for animation
+function victory () {
+  $('<div id="victory"><span>VICTORY</span></div>').insertAfter('#strictMode')
+}
