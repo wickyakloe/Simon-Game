@@ -78,22 +78,40 @@ function clickButton (color, value) {
   return userInput
 }
 
+// Test userInput array against playlist array
 function tester (cb1) {
   if (cb1.length !== playlist.length) {
     cb1.forEach(function (number, index) {
       if (cb1[index] !== playlist[index]) {
-        console.log('values are not equal')
-        userInput = []
-        playButtons()
+        //
+        if ($('#strictBut').val() === 'OFF') {
+          console.log('values are not equal2')
+          userInput = []
+          playButtons()
+        } else {
+          playlist = []
+          userInput = []
+          $('#level').text('00')
+          fillPlaylist()
+          playButtons()
+        }
       } else {
         console.log('values equal')
       }
     })
   } else {
     if (cb1[cb1.length - 1] !== playlist[playlist.length - 1]) {
-      console.log('values are not equal2')
-      userInput = []
-      playButtons()
+      if ($('#strictBut').val() === 'OFF') {
+        console.log('values are not equal2')
+        userInput = []
+        playButtons()
+      } else {
+        playlist = []
+        userInput = []
+        $('#level').text('00')
+        fillPlaylist()
+        playButtons()
+      }
     } else {
       console.log('values equal2')
       fillPlaylist()
