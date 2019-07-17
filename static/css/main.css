@@ -219,3 +219,28 @@ h2 {
     text-decoration: none;
     display: inline-block;
 }
+
+/* Victory message */
+#victory {
+    transform: rotate(-90deg);
+    position: relative;
+    bottom: 420px;
+    left: -170px;
+}
+
+#victory span {
+    font-size: 50px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.0);
+    animation-name: vicAni;
+    animation-duration: .5s;
+    animation-iteration-count: 3;
+}
+
+@keyframes vicAni {
+    0% { color: blue; }
+    25% { color: orange; }
+    50% { color: yellow; }
+    75% { color: red; }
+    100% { color: rgba(255, 255, 255, 0.0); }
+}

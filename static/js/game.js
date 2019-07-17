@@ -131,6 +131,13 @@ function genRandomInt () {
 function fillPlaylist () {
   playlist.push(genRandomInt())
   showLevel()
+  if (showLevel() === '21') {
+    victory()
+    $('#reset').mousedown()
+    $('#reset').mouseup()
+  } else {
+    console.log('Awaiting victory')
+  }
 }
 
 // Play the current level/round from the Main playlist
@@ -186,4 +193,10 @@ function showLevel () {
   } else {
     $('#level').text(playlist.length)
   }
+  return $('#level').text()
+}
+
+// Victory message, see css for animation
+function victory () {
+  $('<div id="victory"><span>VICTORY</span></div>').insertAfter('#strictMode')
 }
