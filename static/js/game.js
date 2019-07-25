@@ -1,9 +1,9 @@
 /* eslint-env jquery */
 
 // The main Playlist
-var playlist = []
+let playlist = []
 // The user input
-var userInput = []
+let userInput = []
 // Start/on Button
 
 $('#start').on('click', function () {
