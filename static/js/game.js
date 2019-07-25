@@ -12,9 +12,6 @@ $('#start').on('click', function () {
   $('#green').addClass('light')
   $('#blue').addClass('light')
   $('#yellow').addClass('light')
-  // Start game
-  fillPlaylist()
-  playButtons()
   // Activate buttons
   $('#red').attr('onclick', 'tester(clickButton("red", 0 ))')
   $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
@@ -24,6 +21,9 @@ $('#start').on('click', function () {
   $('#strictBut').attr('disabled', true)
   // Disable the on button
   $('#start').attr('disabled', true)
+  // Start game
+  fillPlaylist()
+  playButtons()
 })
 
 // Reset/off Button
@@ -83,7 +83,7 @@ function tester (cb1) {
   if (cb1.length !== playlist.length) {
     cb1.forEach(function (number, index) {
       if (cb1[index] !== playlist[index]) {
-        //
+        // Check strictmode on or off
         if ($('#strictBut').val() === 'OFF') {
           console.log('values are not equal2')
           userInput = []
@@ -140,9 +140,27 @@ function fillPlaylist () {
   }
 }
 
+function addRemClick () {
+  if ($('#red')[0].hasAttribute('onclick') && $('#blue')[0].hasAttribute('onclick') &&
+  $('#green')[0].hasAttribute('onclick') && $('#yellow')[0].hasAttribute('onclick')) {
+    $('#red').removeAttr('onclick')
+    $('#green').removeAttr('onclick')
+    $('#blue').removeAttr('onclick')
+    $('#yellow').removeAttr('onclick')
+  } else {
+    $('#red').attr('onclick', 'tester(clickButton("red", 0 ))')
+    $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
+    $('#blue').attr('onclick', 'tester(clickButton("blue", 2 ))')
+    $('#yellow').attr('onclick', 'tester(clickButton("yellow", 3 ))')
+  }
+}
+
 // Play the current level/round from the Main playlist
 function playButtons () {
-  return arrayPlusDelay(playlist, 1000)
+  console.log('Removing onclick attribute')
+  addRemClick()
+  console.log('Playing')
+  return arrayPlusDelay(playlist, 800)
 }
 
 // Program to pass each iteration with a delay
@@ -153,6 +171,10 @@ function arrayPlusDelay (array, delay) {
       checkValue(number)
     }, delay * (index + 1))
   })
+  setTimeout(function () {
+    console.log('Adding onclick attribute')
+    addRemClick()
+  }, delay * (playlist.length + 1))
 }
 
 // check the value in playlist and change color and play sound
@@ -199,4 +221,7 @@ function showLevel () {
 // Victory message, see css for animation
 function victory () {
   $('<div id="victory"><span>VICTORY</span></div>').insertAfter('#strictMode')
+  setTimeout(function () {
+    $('#victory').remove()
+  }, 5000)
 }
