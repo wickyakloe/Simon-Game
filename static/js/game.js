@@ -131,6 +131,10 @@ function genRandomInt () {
 function fillPlaylist () {
   playlist.push(genRandomInt())
   showLevel()
+  victoryCheck()
+}
+
+function victoryCheck () {
   if (showLevel() === '21') {
     victory()
     $('#reset').mousedown()
