@@ -79,10 +79,10 @@ function clickButton (color, value) {
 }
 
 // Test userInput array against playlist array
-function tester (cb1) {
-  if (cb1.length !== playlist.length) {
-    cb1.forEach(function (number, index) {
-      if (cb1[index] !== playlist[index]) {
+function tester (userinput) {
+  if (userinput.length !== playlist.length) {
+    userinput.forEach(function (number, index) {
+      if (userinput[index] !== playlist[index]) {
         // Check strictmode on or off
         if ($('#strictBut').val() === 'OFF') {
           console.log('values are not equal2')
@@ -99,25 +99,23 @@ function tester (cb1) {
         console.log('values equal')
       }
     })
-  } else {
-    if (cb1[cb1.length - 1] !== playlist[playlist.length - 1]) {
-      if ($('#strictBut').val() === 'OFF') {
-        console.log('values are not equal2')
-        userInput = []
-        playButtons()
-      } else {
-        playlist = []
-        userInput = []
-        $('#level').text('00')
-        fillPlaylist()
-        playButtons()
-      }
+  } else if (userinput[userinput.length - 1] !== playlist[playlist.length - 1]) {
+    if ($('#strictBut').val() === 'OFF') {
+      console.log('values are not equal2')
+      userInput = []
+      playButtons()
     } else {
-      console.log('values equal2')
+      playlist = []
+      userInput = []
+      $('#level').text('00')
       fillPlaylist()
       playButtons()
-      userInput = []
     }
+  } else {
+    console.log('values equal2')
+    fillPlaylist()
+    playButtons()
+    userInput = []
   }
 }
 
