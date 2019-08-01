@@ -78,6 +78,7 @@ function clickButton (color, value) {
   return userInput
 }
 
+// Check if strictmode is on or off
 function strictMode () {
   if ($('#strictBut').val() === 'OFF') {
     console.log('values are not equal2')
@@ -99,7 +100,6 @@ function tester (userinput) {
   if (userinput.length !== playlist.length) {
     userinput.forEach(function (number, index) {
       if (userinput[index] !== playlist[index]) {
-        // Check strictmode on or off
         strictMode()
       } else {
         console.log('values equal')
@@ -139,18 +139,14 @@ function victoryCheck () {
 }
 
 function addRemClick () {
-  if ($('#red')[0].hasAttribute('onclick') && $('#blue')[0].hasAttribute('onclick') &&
-  $('#green')[0].hasAttribute('onclick') && $('#yellow')[0].hasAttribute('onclick')) {
-    $('#red').removeAttr('onclick')
-    $('#green').removeAttr('onclick')
-    $('#blue').removeAttr('onclick')
-    $('#yellow').removeAttr('onclick')
-  } else {
-    $('#red').attr('onclick', 'tester(clickButton("red", 0 ))')
-    $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
-    $('#blue').attr('onclick', 'tester(clickButton("blue", 2 ))')
-    $('#yellow').attr('onclick', 'tester(clickButton("yellow", 3 ))')
-  }
+  const butColors = { 'red': 0, 'green': 1, 'blue': 2, 'yellow': 3 }
+  Object.keys(butColors).forEach(function (key) {
+    if ($(`#${key}`)[0].hasAttribute('onclick')) {
+      $(`#${key}`).removeAttr('onclick')
+    } else {
+      $(`#${key}`).attr('onclick', `tester(clickButton('${key}', ${butColors[key]}))`)
+    }
+  })
 }
 
 // Play the current level/round from the Main playlist
