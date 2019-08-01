@@ -86,6 +86,7 @@ function tester (userinput) {
         // Check strictmode on or off
         if ($('#strictBut').val() === 'OFF') {
           console.log('values are not equal2')
+          wrongButton()
           userInput = []
           playButtons()
         } else {
@@ -102,6 +103,7 @@ function tester (userinput) {
   } else if (userinput[userinput.length - 1] !== playlist[playlist.length - 1]) {
     if ($('#strictBut').val() === 'OFF') {
       console.log('values are not equal2')
+      wrongButton()
       userInput = []
       playButtons()
     } else {
@@ -226,4 +228,10 @@ function victory () {
   setTimeout(function () {
     $('#victory').remove()
   }, 5000)
+}
+
+function wrongButton () {
+  let wrongSound = new Audio('static/media/Wrong.mp3')
+  wrongSound.volume = 0.5
+  wrongSound.play()
 }
