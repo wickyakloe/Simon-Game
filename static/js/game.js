@@ -12,11 +12,8 @@ $('#start').on('click', function () {
   $('#green').addClass('light')
   $('#blue').addClass('light')
   $('#yellow').addClass('light')
-  // Activate buttons
-  $('#red').attr('onclick', 'tester(clickButton("red", 0 ))')
-  $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
-  $('#blue').attr('onclick', 'tester(clickButton("blue", 2 ))')
-  $('#yellow').attr('onclick', 'tester(clickButton("yellow", 3 ))')
+  // Activate buttons if inactive
+  addRemClick()
   // Disable the strict button
   $('#strictBut').attr('disabled', true)
   // Disable the on button
@@ -31,11 +28,8 @@ $(function resetButton () {
   $('#reset').on('mousedown', function () {
     $(this).css('background-color', 'red')
     $('#start').removeAttr('style')
-    // Deactivate buttons
-    $('#red').removeAttr('onclick')
-    $('#green').removeAttr('onclick')
-    $('#blue').removeAttr('onclick')
-    $('#yellow').removeAttr('onclick')
+    // Deactivate buttons if active
+    addRemClick()
     $('#level').text('00')
     // Enable the strict button
     $('#strictBut').attr('disabled', false)
@@ -81,7 +75,6 @@ function clickButton (color, value) {
 // Check if strictmode is on or off
 function strictMode () {
   if ($('#strictBut').val() === 'OFF') {
-    console.log('values are not equal2')
     wrongButton()
     userInput = []
     playButtons()
@@ -101,14 +94,11 @@ function tester (userinput) {
     userinput.forEach(function (number, index) {
       if (userinput[index] !== playlist[index]) {
         strictMode()
-      } else {
-        console.log('values equal')
       }
     })
   } else if (userinput[userinput.length - 1] !== playlist[playlist.length - 1]) {
     strictMode()
   } else {
-    console.log('values equal2')
     fillPlaylist()
     playButtons()
     userInput = []
@@ -151,9 +141,7 @@ function addRemClick () {
 
 // Play the current level/round from the Main playlist
 function playButtons () {
-  console.log('Removing onclick attribute')
   addRemClick()
-  console.log('Playing')
   return arrayPlusDelay(playlist, 800)
 }
 
@@ -166,7 +154,6 @@ function arrayPlusDelay (array, delay) {
     }, delay * (index + 1))
   })
   setTimeout(function () {
-    console.log('Adding onclick attribute')
     addRemClick()
   }, delay * (playlist.length + 1))
 }
@@ -177,22 +164,18 @@ function checkValue (colorValue) {
     changeColor('red')
     let simonSound1 = new Audio('static/media/simonSound1.mp3')
     simonSound1.play()
-    console.log('value is 0 red')
   } else if (colorValue === 1) {
     changeColor('green')
     let simonSound2 = new Audio('static/media/simonSound2.mp3')
     simonSound2.play()
-    console.log('value is 1 green')
   } else if (colorValue === 2) {
     changeColor('blue')
     let simonSound3 = new Audio('static/media/simonSound3.mp3')
     simonSound3.play()
-    console.log('value is 2 blue')
   } else {
     changeColor('yellow')
     let simonSound4 = new Audio('static/media/simonSound4.mp3')
     simonSound4.play()
-    console.log('value is 3 yellow')
   }
 }
 
