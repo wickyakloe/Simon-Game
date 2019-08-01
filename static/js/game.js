@@ -79,13 +79,14 @@ function clickButton (color, value) {
 }
 
 // Test userInput array against playlist array
-function tester (cb1) {
-  if (cb1.length !== playlist.length) {
-    cb1.forEach(function (number, index) {
-      if (cb1[index] !== playlist[index]) {
+function tester (userinput) {
+  if (userinput.length !== playlist.length) {
+    userinput.forEach(function (number, index) {
+      if (userinput[index] !== playlist[index]) {
         // Check strictmode on or off
         if ($('#strictBut').val() === 'OFF') {
           console.log('values are not equal2')
+          wrongButton()
           userInput = []
           playButtons()
         } else {
@@ -99,25 +100,24 @@ function tester (cb1) {
         console.log('values equal')
       }
     })
-  } else {
-    if (cb1[cb1.length - 1] !== playlist[playlist.length - 1]) {
-      if ($('#strictBut').val() === 'OFF') {
-        console.log('values are not equal2')
-        userInput = []
-        playButtons()
-      } else {
-        playlist = []
-        userInput = []
-        $('#level').text('00')
-        fillPlaylist()
-        playButtons()
-      }
+  } else if (userinput[userinput.length - 1] !== playlist[playlist.length - 1]) {
+    if ($('#strictBut').val() === 'OFF') {
+      console.log('values are not equal2')
+      wrongButton()
+      userInput = []
+      playButtons()
     } else {
-      console.log('values equal2')
+      playlist = []
+      userInput = []
+      $('#level').text('00')
       fillPlaylist()
       playButtons()
-      userInput = []
     }
+  } else {
+    console.log('values equal2')
+    fillPlaylist()
+    playButtons()
+    userInput = []
   }
 }
 
@@ -131,6 +131,10 @@ function genRandomInt () {
 function fillPlaylist () {
   playlist.push(genRandomInt())
   showLevel()
+  victoryCheck()
+}
+
+function victoryCheck () {
   if (showLevel() === '21') {
     victory()
     $('#reset').mousedown()
@@ -181,22 +185,22 @@ function arrayPlusDelay (array, delay) {
 function checkValue (colorValue) {
   if (colorValue === 0) {
     changeColor('red')
-    var simonSound1 = new Audio('static/media/simonSound1.mp3')
+    let simonSound1 = new Audio('static/media/simonSound1.mp3')
     simonSound1.play()
     console.log('value is 0 red')
   } else if (colorValue === 1) {
     changeColor('green')
-    var simonSound2 = new Audio('static/media/simonSound2.mp3')
+    let simonSound2 = new Audio('static/media/simonSound2.mp3')
     simonSound2.play()
     console.log('value is 1 green')
   } else if (colorValue === 2) {
     changeColor('blue')
-    var simonSound3 = new Audio('static/media/simonSound3.mp3')
+    let simonSound3 = new Audio('static/media/simonSound3.mp3')
     simonSound3.play()
     console.log('value is 2 blue')
   } else {
     changeColor('yellow')
-    var simonSound4 = new Audio('static/media/simonSound4.mp3')
+    let simonSound4 = new Audio('static/media/simonSound4.mp3')
     simonSound4.play()
     console.log('value is 3 yellow')
   }
@@ -224,4 +228,10 @@ function victory () {
   setTimeout(function () {
     $('#victory').remove()
   }, 5000)
+}
+
+function wrongButton () {
+  let wrongSound = new Audio('static/media/Wrong.mp3')
+  wrongSound.volume = 0.5
+  wrongSound.play()
 }
