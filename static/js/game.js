@@ -12,11 +12,8 @@ $('#start').on('click', function () {
   $('#green').addClass('light')
   $('#blue').addClass('light')
   $('#yellow').addClass('light')
-  // Activate buttons
-  $('#red').attr('onclick', 'tester(clickButton("red", 0 ))')
-  $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
-  $('#blue').attr('onclick', 'tester(clickButton("blue", 2 ))')
-  $('#yellow').attr('onclick', 'tester(clickButton("yellow", 3 ))')
+  // Activate buttons if inactive
+  addRemClick()
   // Disable the strict button
   $('#strictBut').attr('disabled', true)
   // Disable the on button
@@ -31,11 +28,8 @@ $(function resetButton () {
   $('#reset').on('mousedown', function () {
     $(this).css('background-color', 'red')
     $('#start').removeAttr('style')
-    // Deactivate buttons
-    $('#red').removeAttr('onclick')
-    $('#green').removeAttr('onclick')
-    $('#blue').removeAttr('onclick')
-    $('#yellow').removeAttr('onclick')
+    // Deactivate buttons if active
+    addRemClick()
     $('#level').text('00')
     // Enable the strict button
     $('#strictBut').attr('disabled', false)
@@ -78,46 +72,36 @@ function clickButton (color, value) {
   return userInput
 }
 
+// Check if strictmode is on or off
+function strictMode () {
+  if ($('#strictBut').val() === 'OFF') {
+    wrongButton()
+    userInput = []
+    playButtons()
+  } else {
+    wrongButton()
+    playlist = []
+    userInput = []
+    $('#level').text('00')
+    fillPlaylist()
+    playButtons()
+  }
+}
+
 // Test userInput array against playlist array
-function tester (cb1) {
-  if (cb1.length !== playlist.length) {
-    cb1.forEach(function (number, index) {
-      if (cb1[index] !== playlist[index]) {
-        // Check strictmode on or off
-        if ($('#strictBut').val() === 'OFF') {
-          console.log('values are not equal2')
-          userInput = []
-          playButtons()
-        } else {
-          playlist = []
-          userInput = []
-          $('#level').text('00')
-          fillPlaylist()
-          playButtons()
-        }
-      } else {
-        console.log('values equal')
+function tester (userinput) {
+  if (userinput.length !== playlist.length) {
+    userinput.forEach(function (number, index) {
+      if (userinput[index] !== playlist[index]) {
+        strictMode()
       }
     })
+  } else if (userinput[userinput.length - 1] !== playlist[playlist.length - 1]) {
+    strictMode()
   } else {
-    if (cb1[cb1.length - 1] !== playlist[playlist.length - 1]) {
-      if ($('#strictBut').val() === 'OFF') {
-        console.log('values are not equal2')
-        userInput = []
-        playButtons()
-      } else {
-        playlist = []
-        userInput = []
-        $('#level').text('00')
-        fillPlaylist()
-        playButtons()
-      }
-    } else {
-      console.log('values equal2')
-      fillPlaylist()
-      playButtons()
-      userInput = []
-    }
+    fillPlaylist()
+    playButtons()
+    userInput = []
   }
 }
 
@@ -131,6 +115,10 @@ function genRandomInt () {
 function fillPlaylist () {
   playlist.push(genRandomInt())
   showLevel()
+  victoryCheck()
+}
+
+function victoryCheck () {
   if (showLevel() === '21') {
     victory()
     $('#reset').mousedown()
@@ -141,25 +129,19 @@ function fillPlaylist () {
 }
 
 function addRemClick () {
-  if ($('#red')[0].hasAttribute('onclick') && $('#blue')[0].hasAttribute('onclick') &&
-  $('#green')[0].hasAttribute('onclick') && $('#yellow')[0].hasAttribute('onclick')) {
-    $('#red').removeAttr('onclick')
-    $('#green').removeAttr('onclick')
-    $('#blue').removeAttr('onclick')
-    $('#yellow').removeAttr('onclick')
-  } else {
-    $('#red').attr('onclick', 'tester(clickButton("red", 0 ))')
-    $('#green').attr('onclick', 'tester(clickButton("green", 1 ))')
-    $('#blue').attr('onclick', 'tester(clickButton("blue", 2 ))')
-    $('#yellow').attr('onclick', 'tester(clickButton("yellow", 3 ))')
-  }
+  const butColors = { 'red': 0, 'green': 1, 'blue': 2, 'yellow': 3 }
+  Object.keys(butColors).forEach(function (key) {
+    if ($(`#${key}`)[0].hasAttribute('onclick')) {
+      $(`#${key}`).removeAttr('onclick')
+    } else {
+      $(`#${key}`).attr('onclick', `tester(clickButton('${key}', ${butColors[key]}))`)
+    }
+  })
 }
 
 // Play the current level/round from the Main playlist
 function playButtons () {
-  console.log('Removing onclick attribute')
   addRemClick()
-  console.log('Playing')
   return arrayPlusDelay(playlist, 800)
 }
 
@@ -172,7 +154,6 @@ function arrayPlusDelay (array, delay) {
     }, delay * (index + 1))
   })
   setTimeout(function () {
-    console.log('Adding onclick attribute')
     addRemClick()
   }, delay * (playlist.length + 1))
 }
@@ -181,24 +162,20 @@ function arrayPlusDelay (array, delay) {
 function checkValue (colorValue) {
   if (colorValue === 0) {
     changeColor('red')
-    var simonSound1 = new Audio('static/media/simonSound1.mp3')
+    let simonSound1 = new Audio('static/media/simonSound1.mp3')
     simonSound1.play()
-    console.log('value is 0 red')
   } else if (colorValue === 1) {
     changeColor('green')
-    var simonSound2 = new Audio('static/media/simonSound2.mp3')
+    let simonSound2 = new Audio('static/media/simonSound2.mp3')
     simonSound2.play()
-    console.log('value is 1 green')
   } else if (colorValue === 2) {
     changeColor('blue')
-    var simonSound3 = new Audio('static/media/simonSound3.mp3')
+    let simonSound3 = new Audio('static/media/simonSound3.mp3')
     simonSound3.play()
-    console.log('value is 2 blue')
   } else {
     changeColor('yellow')
-    var simonSound4 = new Audio('static/media/simonSound4.mp3')
+    let simonSound4 = new Audio('static/media/simonSound4.mp3')
     simonSound4.play()
-    console.log('value is 3 yellow')
   }
 }
 
@@ -224,4 +201,10 @@ function victory () {
   setTimeout(function () {
     $('#victory').remove()
   }, 5000)
+}
+
+function wrongButton () {
+  let wrongSound = new Audio('static/media/Wrong.mp3')
+  wrongSound.volume = 0.5
+  wrongSound.play()
 }
